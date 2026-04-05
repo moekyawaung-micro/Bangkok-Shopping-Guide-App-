@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bangkok Shopping & Mall Guide - ဘန်ကောက်ဈေးဝယ်လမ်းညွှန်</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #EE5A6F;
+            --accent: #FFE5E5;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+            --info: #3B82F6;
+            --dark: #1a1a2e;
+            --light: #f5f5f5;
+            --white: #fff;
+            --gold: #FFD700;
+            --pink: #FF1493;
+        }
+
+        body {
+            font-family: 'Padauk', 'Myanmar3', 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #FFE5E5 0%, #FFD4D4 50%, #FFC9C9 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        /* ============== HEADER ============== */
+        .header {
+            background: linear-gradient(135deg, #FF6B6B 0%, #EE5A6F 50%, #E74C3C 100%);
+            border-radius: 20px;
+            padding: 40px 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 50px rgba(255, 107, 107, 0.4);
+            animation: slideInDown 0.6s ease-out;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.15), transparent);
+            pointer-events: none;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .header p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .lang-selector {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .lang-btn {
+            padding: 10px 16px;
+            border: 2px solid white;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 12px;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: white;
+            color: #FF6B6B;
+            border-color: #FF6B6B;
+        }
+
+        /* ============== QUICK STATS ============== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #FF6B6B;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 900;
+            color: #FF6B6B;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        /* ============== QUICK ACCESS ============== */
+        .quick-access {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .quick-btn {
+            background: white;
+            border: 2px solid #FF6B6B;
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            font-weight: 700;
+            font-size: 14px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .quick-btn:hover {
+            background: #FF6B6B;
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .quick-btn-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        /* ============== MAIN LAYOUT ============== */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        /* ============== SEARCH PANEL ============== */
+        .search-panel {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+
+        .search-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #FF6B6B;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            color: #666;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #FFE5E5;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'Padauk', 'Myanmar3', 'Segoe UI', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .form-input:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: #FF6B6B;
+            box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+        }
+
+        .btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Padauk', 'Myanmar3', 'Segoe UI', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FF6B6B 0%, #EE5A6F 100%);
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+            border: 2px solid #FF6B6B;
+        }
+
+        .btn-secondary:hover {
+            background: #FF6B6B;
+            color: white;
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        /* ============== FILTER LIST ============== */
+        .filter-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .filter-item {
+            background: linear-gradient(135deg, #FFE5E5 0%, #FFF0F0 100%);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .filter-item:hover {
+            transform: translateX(5px);
+            border-color: #FF6B6B;
+        }
+
+        .filter-item.selected {
+            background: linear-gradient(135deg, #FF6B6B 0%, #EE5A6F 100%);
+            color: white;
+            border-color: #FFE5E5;
+        }
+
+        /* ============== TABS ============== */
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            flex-wrap: wrap;
+        }
+
+        .nav-tab {
+            padding: 12px 20px;
+            background: #f0f0f0;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 13px;
+            transition: all 0.3s;
+            font-family: 'Padauk', 'Myanmar3', 'Segoe UI', sans-serif;
+            white-space: nowrap;
+        }
+
+        .nav-tab:hover {
+            transform: translateY(-2px);
+        }
+
+        .nav-tab.active {
+            background: linear-gradient(135deg, #FF6B6B 0%, #EE5A6F 100%);
+            color: white;
+            border-color: #FFE5E5;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ============== CARDS ============== */
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            animation: slideInUp 0.5s ease-out;
+            transition: all 0.3s;
+            border-left: 4px solid #FF6B6B;
+        }
+
+        .card:hover {
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #FF6B6B;
+        }
+
+        .card-icon {
+            font-size: 28px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #1a1a2e;
+        }
+
+        /* ============== MALL CARD ============== */
+        .mall-card {
+            background: linear-gradient(135deg, #FFE5E5 0%, #FFF0F0 100%);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #FF6B6B;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mall-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -50px;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 107, 107, 0.1);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .mall-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.2);
+        }
+
+        .mall-card.active {
+            background: linear-gradient(135deg, #FF6B6B 0%, #EE5A6F 100%);
+            color: white;
+            border-left-color: white;
+        }
+
+        .mall-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .mall-name {
+            font-size: 18px;
+            font-weight: 800;
+            color: #FF6B6B;
+            margin-bottom: 5px;
+        }
+
+        .mall-card.active .mall-name {
+            color: white;
+        }
+
+        .mall-badge {
+            font-size: 11px;
+            color: white;
+            font-weight: 700;
+            background: #FF6B6B;
+            padding: 4px 10px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .mall-card.active .mall-badge {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .mall-info {
+            font-size: 12px;
+            color: #555;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .mall-card.active .mall-info {
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .mall-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .mall-info-icon {
+            min-width: 18px;
+            font-size: 14px;
+        }
+
+        .mall-rating {
+            display: inline-block;
+            background: #FFD700;
+            color: #333;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-right: 5px;
+        }
+
+        .mall-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .mall-btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            text-transform: uppercase;
+            flex: 1;
+        }
+
+        .mall-btn-primary {
+            background: #FF6B6B;
+            color: white;
+        }
+
+        .mall-btn-primary:hover {
+            background: #EE5A6F;
+        }
+
+        .mall-btn-secondary {
+            background: white;
+            color: #FF6B6B;
+            border: 2px solid #FF6B6B;
+        }
+
+        .mall-btn-secondary:hover {
+            background: #FFF0F0;
+        }
+
+        .mall-card.active .mall-btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-color: white;
+        }
+
+        /* ============== PRODUCT GRID ============== */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+            border-color: #FF6B6B;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #FFE5E5 0%, #FFF0F0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            font-weight: 800;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-sale {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #EF4444;
+            color: white;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .product-content {
+            padding: 15px;
+        }
+
+        .product-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .product-category {
+            font-size: 11px;
+            color: #FF6B6B;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .product-rating {
+            font-size: 12px;
+            color: #FFD700;
+            margin-bottom: 8px;
+        }
+
+        .product-price {
+            font-size: 16px;
+            font-weight: 800;
+            color: #FF6B6B;
+        }
+
+        /* ============== BRAND GRID ============== */
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+        }
+
+        .brand-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .brand-card:hover {
+            transform: scale(1.05);
+            border-color: #FF6B6B;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .brand-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+
+        .brand-name {
+            font-size: 12px;
+            font-weight: 700;
+            color: #1a1a2e;
+        }
+
+        /* ============== INFO BOX ============== */
+        .info-box {
+            background: #FFF3E0;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #F59E0B;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            font-size: 12px;
+            color: #E65100;
+            line-height: 1.6;
+        }
+
+        .info-box-icon {
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .danger-box {
+            background: #FFEBEE;
+            border-left-color: #EF4444;
+            color: #C62828;
+        }
+
+        .success-box {
+            background: #E8F5E9;
+            border-left-color: #10B981;
+            color: #1B5E20;
+        }
+
+        .promo-box {
+            background: #FCE4EC;
+            border-left-color: #FF1493;
+            color: #880E4F;
+        }
+
+        .info-box-header {
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        /* ============== BADGE ============== */
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .badge-luxury {
+            background: #FFD700;
+            color: #333;
+        }
+
+        .badge-mall {
+            background: #FF6B6B;
+            color: white;
+        }
+
+        .badge-outlet {
+            background: #3B82F6;
+            color: white;
+        }
+
+        .badge-market {
+            background: #10B981;
+            color: white;
+        }
+
+        /* ============== RESPONSIVE ============== */
+        @media (max-width: 1024px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .search-panel {
+                position: static;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 25px 20px;
+            }
+
+            .header h1 {
+                font-size: 36px;
+                flex-direction: column;
+            }
+
+            .quick-access {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-tabs {
+                flex-direction: column;
+            }
+
+            .nav-tab {
+                width: 100%;
+                text-align: center;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .filter-list {
+                max-height: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .quick-access {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 15px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mall-actions {
+                flex-direction: column;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #FF6B6B;
+            border-radius: 10px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* ============== ALERTS ============== */
+        .alert {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 2000;
+            animation: slideInRight 0.3s ease-out;
+            font-family: 'Padauk', 'Myanmar3', 'Segoe UI', sans-serif;
+            font-weight: 600;
+            max-width: 300px;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .alert.success {
+            border-left: 4px solid #10B981;
+            color: #059669;
+        }
+
+        .alert.warning {
+            border-left: 4px solid #F59E0B;
+            color: #D97706;
+        }
+
+        .alert.danger {
+            border-left: 4px solid #EF4444;
+            color: #DC2626;
+        }
+
+        .alert.info {
+            border-left: 4px solid #3B82F6;
+            color: #2563EB;
+        }
+
+        /* ============== PRICE TABLE ============== */
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .price-table th,
+        .price-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #FFE5E5;
+            font-size: 12px;
+        }
+
+        .price-table th {
+            background: #FFE5E5;
+            font-weight: 700;
+            color: #FF6B6B;
+        }
+
+        .price-table tr:hover {
+            background: #FFF0F0;
+        }
+
+        /* ============== GRID ============== */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline-item {
+            padding-left: 40px;
+            padding-bottom: 20px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background: #FF6B6B;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px #FF6B6B;
+        }
+
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 20px;
+            width: 2px;
+            height: calc(100% - 20px);
+            background: #FFE5E5;
+        }
+
+        .timeline-title {
+            font-weight: 700;
+            color: #FF6B6B;
+            margin-bottom: 5px;
+        }
+
+        .timeline-text {
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <div class="header">
+        <div class="header-content">
+            <h1>
+                <span style="font-size: 40px;">🛍️</span>
+                Bangkok Shopping Guide
+            </h1>
+            <p id="headerSub">ဘန်ကောက်ဈေးဝယ်လမ်းညွှန်</p>
+            <p style="font-size: 13px; margin-top: 10px; opacity: 0.9;">🏬 <span id="subText">ရှော့ပင်း၊ မောလ်များ၊ ရမည့်ပစ်စည်း</span></p>
+            <div class="lang-selector">
+                <button class="lang-btn active" onclick="setLanguage('my')" id="myBtn">MY</button>
+                <button class="lang-btn" onclick="setLanguage('en')" id="enBtn">EN</button>
+                <button class="lang-btn" onclick="setLanguage('th')" id="thBtn">TH</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- STATS -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">25+</div>
+                <div class="stat-label">မောလ်များ</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">ရှော့ပင်းများ</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">ကုန်သည်များ</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">ထူးခြားသည့်ပစ်စည်း</div>
+            </div>
+        </div>
+
+        <!-- QUICK ACCESS -->
+        <div class="quick-access">
+            <div class="quick-btn" onclick="switchTab('malls')">
+                <div class="quick-btn-icon">🏬</div>
+                <div>မောလ်များ</div>
+            </div>
+            <div class="quick-btn" onclick="switchTab('outlets')">
+                <div class="quick-btn-icon">💰</div>
+                <div>ရှော့ပင်း</div>
+            </div>
+            <div class="quick-btn" onclick="switchTab('markets')">
+                <div class="quick-btn-icon">🏪</div>
+                <div>ဈေးများ</div>
+            </div>
+            <div class="quick-btn" onclick="switchTab('brands')">
+                <div class="quick-btn-icon">✨</div>
+                <div>ကုန်တံဆိပ်များ</div>
+            </div>
+            <div class="quick-btn" onclick="switchTab('products')">
+                <div class="quick-btn-icon">🎁</div>
+                <div>ထူးခြားသည့်</div>
+            </div>
+            <div class="quick-btn" onclick="switchTab('deals')">
+                <div class="quick-btn-icon">🎯</div>
+                <div>အကျိုးကြေး</div>
+            </div>
+        </div>
+
+        <!-- MAIN LAYOUT -->
+        <div class="main-layout">
+            <!-- SEARCH PANEL -->
+            <div class="search-panel">
+                <div class="search-title">
+                    <span>🔍</span>
+                    <span id="searchTitle">ရှာဖွေခြင်း</span>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" id="typeLabel">မောလ်အမျိုးအစား</label>
+                    <select class="form-select" id="mallType" onchange="filterMalls()">
+                        <option value="">အားလုံး</option>
+                        <option value="luxury">တန်ခိုးကြီး</option>
+                        <option value="mid">အလယ်တန်း</option>
+                        <option value="budget">အကုန်အလျော့</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" id="districtLabel">ခရိုင်</label>
+                    <select class="form-select" id="district" onchange="filterMalls()">
+                        <option value="">အားလုံး</option>
+                        <option value="silom">ရှီလုံ</option>
+                        <option value="siam">ရှိုင်း</option>
+                        <option value="chatuchak">ချတုချတ်</option>
+                        <option value="phrom-phong">ဖြုံမ်ဖုံး</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" id="budgetLabel">ခြင်းချထားမည့်သည</label>
+                    <select class="form-select" id="budget" onchange="filterMalls()">
+                        <option value="">အားလုံး</option>
+                        <option value="budget">0-1000 ฿</option>
+                        <option value="mid">1000-5000 ฿</option>
+                        <option value="luxury">5000+ ฿</option>
+                    </select>
+                </div>
+
+                <button class="btn btn-primary btn-block" onclick="resetFilters()">
+                    🔄 <span id="resetBtn">ပြန်မူလ</span>
+                </button>
+
+                <div style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #FFE5E5;">
+                    <div style="font-size: 12px; font-weight: 700; color: #666; margin-bottom: 15px;">⭐ အများအပြင်မောလ်များ</div>
+                    <div class="filter-list" id="popularMalls"></div>
+                </div>
+            </div>
+
+            <!-- CONTENT AREA -->
+            <div>
+                <!-- NAVIGATION TABS -->
+                <div class="nav-tabs">
+                    <button class="nav-tab active" onclick="switchTab('malls')">🏬 <span id="mallsTab">မောလ်များ</span></button>
+                    <button class="nav-tab" onclick="switchTab('outlets')">💰 <span id="outletsTab">ရှော့ပင်း</span></button>
+                    <button class="nav-tab" onclick="switchTab('markets')">🏪 <span id="marketsTab">ဈေးများ</span></button>
+                    <button class="nav-tab" onclick="switchTab('brands')">✨ <span id="brandsTab">ကုန်တံဆိပ်</span></button>
+                    <button class="nav-tab" onclick="switchTab('products')">🎁 <span id="productsTab">ထူးခြားသည့်</span></button>
+                    <button class="nav-tab" onclick="switchTab('deals')">🎯 <span id="dealsTab">အကျိုးကြေး</span></button>
+                </div>
+
+                <!-- MALLS TAB -->
+                <div id="malls" class="tab-content active">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">🏬</div>
+                            <div class="card-title" id="mallsTitle">ဘန်ကောက်မောလ်များ</div>
+                        </div>
+                        <div id="mallsList"></div>
+                    </div>
+                </div>
+
+                <!-- OUTLETS TAB -->
+                <div id="outlets" class="tab-content hidden">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">💰</div>
+                            <div class="card-title" id="outletsTitle">ရှော့ပင်းများ</div>
+                        </div>
+                        <div id="outletsList"></div>
+                    </div>
+                </div>
+
+                <!-- MARKETS TAB -->
+                <div id="markets" class="tab-content hidden">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">🏪</div>
+                            <div class="card-title" id="marketsTitle">ရသည့်ဈေးများ</div>
+                        </div>
+                        <div id="marketsList"></div>
+                    </div>
+                </div>
+
+                <!-- BRANDS TAB -->
+                <div id="brands" class="tab-content hidden">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">✨</div>
+                            <div class="card-title" id="brandsTitle">ကုန်တံဆိပ်များ</div>
+                        </div>
+                        <div id="brandsList"></div>
+                    </div>
+                </div>
+
+                <!-- PRODUCTS TAB -->
+                <div id="products" class="tab-content hidden">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">🎁</div>
+                            <div class="card-title" id="productsTitle">ထူးခြားသည့်ကုန်များ</div>
+                        </div>
+                        <div id="productsList"></div>
+                    </div>
+                </div>
+
+                <!-- DEALS TAB -->
+                <div id="deals" class="tab-content hidden">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">🎯</div>
+                            <div class="card-title" id="dealsTitle">အကျိုးကြေးများ</div>
+                        </div>
+                        <div id="dealsList"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; color: #999; padding: 30px; margin-top: 30px; font-size: 12px;">
+            <p>🛍️ Bangkok Shopping Guide | Offline Shopping 2024</p>
+            <p id="disclaimerText">ℹ️ ဤလမ်းညွှန်သည် အွန်လိုင်းမဲ့ ဈေးဝယ်အချက်အလက်များကို ပြည့်စုံစွာ ပေးစွမ်းပါသည်။</p>
+        </div>
+    </div>
+
+    <script>
+        // ============== TRANSLATIONS ==============
+        const translations = {
+            my: {
+                headerSub: 'ဘန်ကောက်ဈေးဝယ်လမ်းညွှန်',
+                subText: 'ရှော့ပင်း၊ မောလ်များ၊ ရမည့်ပစ်စည်း',
+                disclaimerText: 'ဤလမ်းညွှန်သည် အွန်လိုင်းမဲ့ ဈေးဝယ်အချက်အလက်များကို ပြည့်စုံစွာ ပေးစွမ်းပါသည်။',
+                searchTitle: 'ရှာဖွေခြင်း',
+                typeLabel: 'မောလ်အမျိုးအစား',
+                districtLabel: 'ခရိုင်',
+                budgetLabel: 'ခြင်းချထားမည့်သည',
+                resetBtn: 'ပြန်မူလ'
+            },
+            en: {
+                headerSub: 'Bangkok Shopping Guide',
+                subText: 'Outlets, Malls, Shopping Items',
+                disclaimerText: 'This guide provides complete offline shopping information.',
+                searchTitle: 'Search',
+                typeLabel: 'Mall Type',
+                districtLabel: 'District',
+                budgetLabel: 'Budget',
+                resetBtn: 'Reset'
+            },
+            th: {
+                headerSub: 'คู่มือช็อปปิ้งกรุงเทพ',
+                subText: 'ร้านค้า มอลล์ สินค้าในการช็อปปิ้ง',
+                disclaimerText: 'คู่มือนี้ให้ข้อมูลช็อปปิ้งแบบออฟไลน์ที่สมบูรณ์',
+                searchTitle: 'ค้นหา',
+                typeLabel: 'ประเภทมอลล์',
+                districtLabel: 'เขต',
+                budgetLabel: 'งบประมาณ',
+                resetBtn: 'รีเซ็ต'
+            }
+        };
+
+        // ============== DATABASE ==============
+        const mallsData = [
+            {
+                id: 'siam',
+                name: 'Siam Paragon',
+                type: 'luxury',
+                district: 'siam',
+                address: 'Rama I Rd., Siam',
+                rating: 4.8,
+                reviews: 3500,
+                stores: 250,
+                floors: 6,
+                features: ['Luxury Brands', 'Fine Dining', 'Cinema', 'Aquarium'],
+                hours: '10:00 - 21:00',
+                parking: 3000,
+                phone: '+66 2 610 8000',
+                image: '👑'
+            },
+            {
+                id: 'centralworld',
+                name: 'CentralWorld',
+                type: 'luxury',
+                district: 'siam',
+                address: 'Ratchadamri Rd., Pathumwan',
+                rating: 4.6,
+                reviews: 4200,
+                stores: 500,
+                floors: 8,
+                features: ['Fashion Hub', 'Electronics', 'Home Decor', 'Food Court'],
+                hours: '10:00 - 21:00',
+                parking: 5000,
+                phone: '+66 2 635 1111',
+                image: '🏢'
+            },
+            {
+                id: 'emsphere',
+                name: 'EmSphere',
+                type: 'luxury',
+                district: 'phrom-phong',
+                address: 'Sukhumvit Rd., Phra Khanong',
+                rating: 4.7,
+                reviews: 2800,
+                stores: 300,
+                floors: 5,
+                features: ['Lifestyle Mall', 'Co-working', 'Dining', 'Retail'],
+                hours: '10:00 - 21:00',
+                parking: 2000,
+                phone: '+66 2 262 4888',
+                image: '✨'
+            },
+            {
+                id: 'emquartier',
+                name: 'EmQuartier',
+                type: 'luxury',
+                district: 'phrom-phong',
+                address: 'Sukhumvit Rd., Phra Khanong',
+                rating: 4.7,
+                reviews: 3000,
+                stores: 200,
+                floors: 4,
+                features: ['Fashion', 'Beauty', 'Luxury Brands', 'Fine Dining'],
+                hours: '11:00 - 21:00',
+                parking: 1500,
+                phone: '+66 2 261 9000',
+                image: '💎'
+            },
+            {
+                id: 'terminal21',
+                name: 'Terminal 21',
+                type: 'mid',
+                district: 'asoke',
+                address: 'Sukhumvit Rd., Khlong Toei',
+                rating: 4.5,
+                reviews: 3800,
+                stores: 450,
+                floors: 8,
+                features: ['Fashion', 'Electronics', 'Beauty', 'Food'],
+                hours: '10:00 - 21:00',
+                parking: 4000,
+                phone: '+66 2 108 0888',
+                image: '✈️'
+            },
+            {
+                id: 'paragon',
+                name: 'Paragon Shopping Center',
+                type: 'mid',
+                district: 'siam',
+                address: 'Rama I Rd., Siam',
+                rating: 4.4,
+                reviews: 2500,
+                stores: 180,
+                floors: 4,
+                features: ['Fashion', 'Electronics', 'Dining'],
+                hours: '10:00 - 21:00',
+                parking: 2000,
+                phone: '+66 2 610 8000',
+                image: '🎯'
+            },
+            {
+                id: 'mabk',
+                name: 'MBK Center',
+                type: 'budget',
+                district: 'national',
+                address: 'National Stadium, Rama IV Rd.',
+                rating: 4.3,
+                reviews: 4500,
+                stores: 2000,
+                floors: 8,
+                features: ['Electronics', 'Fashion', 'Accessories', 'Souvenirs'],
+                hours: '10:00 - 21:00',
+                parking: 3000,
+                phone: '+66 2 620 9000',
+                image: '🏪'
+            }
+        ];
+
+        const outletsData = [
+            {
+                id: 'outlet1',
+                name: 'Siam Premium Outlets',
+                location: 'Chachoengsao',
+                distance: '100 km',
+                stores: 150,
+                discount: '30-70%',
+                brands: 'Nike, Adidas, Gap, Coach',
+                image: '💰'
+            },
+            {
+                id: 'outlet2',
+                name: 'Bangkok Premium Outlets',
+                location: 'Pathumthani',
+                distance: '40 km',
+                stores: 200,
+                discount: '20-60%',
+                brands: 'COACH, Calvin Klein, Tommy Hilfiger',
+                image: '🛍️'
+            },
+            {
+                id: 'outlet3',
+                name: 'Khlong Luang Premium Outlets',
+                location: 'Pathumthani',
+                distance: '45 km',
+                stores: 180,
+                discount: '25-65%',
+                brands: 'Polo Ralph Lauren, Burberry, Prada',
+                image: '👜'
+            }
+        ];
+
+        const marketsData = [
+            {
+                id: 'market1',
+                name: 'Chatuchak Market',
+                type: 'Weekend Market',
+                location: 'Chatuchak',
+                stalls: 15000,
+                items: ['Clothing', 'Antiques', 'Home Decor', 'Pets'],
+                bestTime: 'Sat-Sun 9:00-18:00',
+                image: '🏪'
+            },
+            {
+                id: 'market2',
+                name: 'Damnoen Saduak Floating Market',
+                type: 'Traditional Floating',
+                location: 'Ratchaburi',
+                stalls: 500,
+                items: ['Fresh Fruits', 'Vegetables', 'Souvenirs'],
+                bestTime: '6:00-12:00',
+                image: '⛵'
+            },
+            {
+                id: 'market3',
+                name: 'Ore Torrachang Night Market',
+                type: 'Night Market',
+                location: 'Silom',
+                stalls: 200,
+                items: ['Street Food', 'Crafts', 'Clothing'],
+                bestTime: '17:00-23:00',
+                image: '🌙'
+            }
+        ];
+
+        const brandsData = [
+            { name: 'Nike', icon: '👟', category: 'Sports' },
+            { name: 'Adidas', icon: '⚽', category: 'Sports' },
+            { name: 'Coach', icon: '👜', category: 'Luxury' },
+            { name: 'Gucci', icon: '💎', category: 'Luxury' },
+            { name: 'Zara', icon: '👗', category: 'Fashion' },
+            { name: 'H&M', icon: '👕', category: 'Fashion' },
+            { name: 'Apple', icon: '📱', category: 'Electronics' },
+            { name: 'Samsung', icon: '📺', category: 'Electronics' },
+            { name: 'Sephora', icon: '💄', category: 'Beauty' },
+            { name: 'MAC', icon: '💅', category: 'Beauty' }
+        ];
+
+        const productsData = [
+            { category: '👗 Fashion', items: 'Dresses, Shirts, Pants, Jackets', price: '500-5000฿', stores: 100 },
+            { category: '👜 Accessories', items: 'Bags, Scarves, Belts, Hats', price: '100-2000฿', stores: 150 },
+            { category: '📱 Electronics', items: 'Phones, Laptops, Tablets, Watches', price: '5000-50000฿', stores: 80 },
+            { category: '💄 Beauty', items: 'Makeup, Skincare, Perfume, Hair Care', price: '200-3000฿', stores: 120 },
+            { category: '🏠 Home Decor', items: 'Furniture, Cushions, Art, Lamps', price: '1000-10000฿', stores: 60 },
+            { category: '⌚ Jewelry', items: 'Necklaces, Bracelets, Rings, Earrings', price: '500-20000฿', stores: 70 }
+        ];
+
+        const dealsData = [
+            { title: '🎁 Grand Summer Sale', discount: 'Up to 70% OFF', date: 'June-July', stores: ['Siam Paragon', 'CentralWorld'] },
+            { title: '🛍️ Mid Year Sale', discount: 'Buy 1 Get 1', date: 'June', stores: ['Terminal 21', 'MBK'] },
+            { title: '✨ Festival Sale', discount: '50-80% OFF', date: 'August', stores: ['All Major Malls'] },
+            { title: '🎉 Birthday Month Special', discount: 'Extra 20% OFF', date: 'Year Round', stores: ['Member Only'] },
+            { title: '💳 Credit Card Promo', discount: '0% Installment', date: 'Year Round', stores: ['All Stores'] }
+        ];
+
+        // ============== STATE ==============
+        let state = {
+            currentLanguage: 'my',
+            currentTab: 'malls',
+            allMalls: [...mallsData]
+        };
+
+        // ============== INITIALIZATION ==============
+        function init() {
+            setLanguage('my');
+            renderMalls();
+            renderOutlets();
+            renderMarkets();
+            renderBrands();
+            renderProducts();
+            renderDeals();
+            populatePopularMalls();
+        }
+
+        // ============== LANGUAGE ==============
+        function setLanguage(lang) {
+            state.currentLanguage = lang;
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            if (lang === 'my') document.getElementById('myBtn').classList.add('active');
+            else if (lang === 'en') document.getElementById('enBtn').classList.add('active');
+            else document.getElementById('thBtn').classList.add('active');
+            updateUI();
+        }
+
+        function updateUI() {
+            document.getElementById('headerSub').textContent = translations[state.currentLanguage].headerSub || translations['en'].headerSub;
+            document.getElementById('subText').textContent = translations[state.currentLanguage].subText || translations['en'].subText;
+            document.getElementById('disclaimerText').textContent = translations[state.currentLanguage].disclaimerText || translations['en'].disclaimerText;
+            document.getElementById('searchTitle').textContent = translations[state.currentLanguage].searchTitle || translations['en'].searchTitle;
+            document.getElementById('typeLabel').textContent = translations[state.currentLanguage].typeLabel || translations['en'].typeLabel;
+            document.getElementById('districtLabel').textContent = translations[state.currentLanguage].districtLabel || translations['en'].districtLabel;
+            document.getElementById('budgetLabel').textContent = translations[state.currentLanguage].budgetLabel || translations['en'].budgetLabel;
+            document.getElementById('resetBtn').textContent = translations[state.currentLanguage].resetBtn || translations['en'].resetBtn;
+        }
+
+        // ============== TAB SWITCHING ==============
+        function switchTab(tab) {
+            state.currentTab = tab;
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(tab).classList.remove('hidden');
+            
+            document.querySelectorAll('.nav-tab').forEach(btn => btn.classList.remove('active'));
+            event.target.closest('.nav-tab')?.classList.add('active');
+        }
+
+        // ============== RENDER FUNCTIONS ==============
+        function renderMalls() {
+            let html = '';
+            state.allMalls.forEach(mall => {
+                html += `
+                    <div class="mall-card">
+                        <div class="mall-header">
+                            <div>
+                                <div class="mall-name">${mall.name}</div>
+                                <div class="mall-badge">${mall.type.toUpperCase()}</div>
+                            </div>
+                            <div style="font-size: 24px;">${mall.image}</div>
+                        </div>
+
+                        <div class="mall-info">
+                            <div class="mall-info-item">
+                                <div class="mall-info-icon">📍</div>
+                                <div><strong>တည်နေရာ:</strong> ${mall.address}</div>
+                            </div>
+                            <div class="mall-info-item">
+                                <div class="mall-info-icon">⭐</div>
+                                <div><strong>အဆင့်:</strong> ${mall.rating} (${mall.reviews} ပြန်လည်ဆန်းစစ်ခြင်း)</div>
+                            </div>
+                            <div class="mall-info-item">
+                                <div class="mall-info-icon">🏪</div>
+                                <div><strong>အများ:</strong> ${mall.stores} ကုန်သည်များ</div>
+                            </div>
+                            <div class="mall-info-item">
+                                <div class="mall-info-icon">🏢</div>
+                                <div><strong>အဆင့်များ:</strong> ${mall.floors} အဆင့်</div>
+                            </div>
+                            <div class="mall-info-item">
+                                <div class="mall-info-icon">🎯</div>
+                                <div><strong>အဆင့်များ:</strong> ${mall.features.join(', ')}</div>
+                            </div>
+                            <div class="mall-info-item">
+                                <div class="mall-info-icon">🕐</div>
+                                <div><strong>အချိန်:</strong> ${mall.hours}</div>
+                            </div>
+                            <div class="mall-info-item">
+                                <div class="mall-info-icon">🅿️</div>
+                                <div><strong>ကားခြင်း:</strong> ${mall.parking} ခြင်းများ</div>
+                            </div>
+                            <div class="mall-info-item">
+                                <div class="mall-info-icon">📞</div>
+                                <div><strong>ဆက်သွယ်ရန်:</strong> ${mall.phone}</div>
+                            </div>
+                        </div>
+
+                        <div class="mall-actions">
+                            <button class="mall-btn mall-btn-primary" onclick="saveMall('${mall.id}')">⭐ အကြိုက်</button>
+                            <button class="mall-btn mall-btn-secondary" onclick="showDetails('${mall.id}')">📍 အချက်အလက်</button>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('mallsList').innerHTML = html;
+        }
+
+        function renderOutlets() {
+            let html = '<div class="grid-2">';
+            outletsData.forEach(outlet => {
+                html += `
+                    <div class="mall-card">
+                        <div class="mall-header">
+                            <div>
+                                <div class="mall-name">${outlet.name}</div>
+                                <div class="mall-badge">OUTLET</div>
+                            </div>
+                            <div style="font-size: 24px;">${outlet.image}</div>
+                        </div>
+
+                        <div class="mall-info">
+                            <div class="mall-info-item">
+                                <div class="mall-info-icon">📍</div>
+                                <div><strong>${outlet.location}</strong> - ${outlet.distance}</div>
+                            </div>
+                            <div class="mall-info-item">
+                                <div class="mall-info-icon">🏪</div>
+                                <div><strong>${outlet.stores} ကုန်သည်များ</strong></div>
+                            </div>
+                            <div class="mall-info-item">
+                                <div class="mall-info-icon">💰</div>
+                                <div><strong>ဆွဲချေး:</strong> ${outlet.discount}</div>
+                            </div>
+                            <div class="mall-info-item">
+                                <div class="mall-info-icon">✨</div>
+                                <div><strong>ကုန်တံဆိပ်များ:</strong> ${outlet.brands}</div>
+                            </div>
+                        </div>
+
+                        <div class="mall-actions">
+                            <button class="mall-btn mall-btn-primary">🚗 ပြသခြင်း</button>
+                            <button class="mall-btn mall-btn-secondary">📞 ဆက်သွယ်ပါ</button>
+                        </div>
+                    </div>
+                `;
+            });
+            html += '</div>';
+            document.getElementById('outletsList').innerHTML = html;
+        }
+
+        function renderMarkets() {
+            let html = '<div class="grid-2">';
+            marketsData.forEach(market => {
+                html += `
+                    <div class="mall-card">
+                        <div class="mall-header">
+                            <div>
+                                <div class="mall-name">${market.name}</div>
+                                <div class="mall-badge">${market.type}</div>
+                            </div>
+                            <div style="font-size: 24px;">${market.image}</div>
+                        </div>
+
+                        <div class="mall-info">
+                            <div class="mall-info-item">
+                                <div class="mall-info-icon">📍</div>
+                                <div><strong>${market.location}</strong></div>
+                            </div>
+                            <div class="mall-info-item">
+                                <div class="mall-info-icon">🏪</div>
+                                <div><strong>${market.stalls} ကုန်သည်များ</strong></div>
+                            </div>
+                            <div class="mall-info-item">
+                                <div class="mall-info-icon">🏷️</div>
+                                <div><strong>အမျိုးအစား:</strong> ${market.items.join(', ')}</div>
+                            </div>
+                            <div class="mall-info-item">
+                                <div class="mall-info-icon">🕐</div>
+                                <div><strong>အချိန်:</strong> ${market.bestTime}</div>
+                            </div>
+                        </div>
+
+                        <div class="mall-actions">
+                            <button class="mall-btn mall-btn-primary">🗺️ ဆင့်ခြင်း</button>
+                            <button class="mall-btn mall-btn-secondary">💡 အကြိုတင်</button>
+                        </div>
+                    </div>
+                `;
+            });
+            html += '</div>';
+            document.getElementById('marketsList').innerHTML = html;
+        }
+
+        function renderBrands() {
+            let html = '<div class="brand-grid">';
+            brandsData.forEach(brand => {
+                html += `
+                    <div class="brand-card">
+                        <div class="brand-icon">${brand.icon}</div>
+                        <div class="brand-name">${brand.name}</div>
+                        <div style="font-size: 10px; color: #999; margin-top: 5px;">${brand.category}</div>
+                    </div>
+                `;
+            });
+            html += '</div>';
+            document.getElementById('brandsList').innerHTML = html;
+        }
+
+        function renderProducts() {
+            let html = '<div class="grid-2">';
+            productsData.forEach(product => {
+                html += `
+                    <div class="mall-card">
+                        <div class="mall-header">
+                            <div>
+                                <div class="mall-name">${product.category}</div>
+                                <div class="mall-badge">${product.stores} ကုန်သည်များ</div>
+                            </div>
+                        </div>
+
+                        <div class="mall-info">
+                            <div class="mall-info-item">
+                                <div class="mall-info-icon">📦</div>
+                                <div><strong>ပစ်စည်းများ:</strong> ${product.items}</div>
+                            </div>
+                            <div class="mall-info-item">
+                                <div class="mall-info-icon">💰</div>
+                                <div><strong>စျေးနှုန်း:</strong> ${product.price}</div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary btn-block" style="margin-top: 12px;">
+                            🛍️ အသုံးပြုမည်
+                        </button>
+                    </div>
+                `;
+            });
+            html += '</div>';
+            document.getElementById('productsList').innerHTML = html;
+        }
+
+        function renderDeals() {
+            let html = '<div class="timeline">';
+            dealsData.forEach(deal => {
+                html += `
+                    <div class="timeline-item">
+                        <div class="timeline-title">${deal.title}</div>
+                        <div class="timeline-text">
+                            <strong>${deal.discount}</strong><br>
+                            📅 ${deal.date}<br>
+                            📍 ${deal.stores.join(', ')}
+                        </div>
+                    </div>
+                `;
+            });
+            html += '</div>';
+            document.getElementById('dealsList').innerHTML = html;
+        }
+
+        function populatePopularMalls() {
+            let html = '';
+            mallsData.slice(0, 5).forEach(mall => {
+                html += `
+                    <div class="filter-item" onclick="selectMall('${mall.id}')">
+                        <div style="font-weight: 700;">${mall.name}</div>
+                        <div style="font-size: 10px; color: #999;">⭐ ${mall.rating} | ${mall.stores} stores</div>
+                    </div>
+                `;
+            });
+            document.getElementById('popularMalls').innerHTML = html;
+        }
+
+        // ============== UTILITIES ==============
+        function filterMalls() {
+            const type = document.getElementById('mallType').value;
+            const district = document.getElementById('district').value;
+            const budget = document.getElementById('budget').value;
+
+            state.allMalls = mallsData.filter(mall => {
+                let match = true;
+                if (type && mall.type !== type) match = false;
+                if (district && mall.district !== district) match = false;
+                if (budget) {
+                    // Budget filtering logic
+                    if (budget === 'budget' && mall.type !== 'budget') match = false;
+                    if (budget === 'mid' && mall.type !== 'mid') match = false;
+                    if (budget === 'luxury' && mall.type !== 'luxury') match = false;
+                }
+                return match;
+            });
+
+            renderMalls();
+            showAlert('✓ ခြင်းချုံးများ အဆင့်သတ်မှတ်ပါခြင်း', 'success');
+        }
+
+        function resetFilters() {
+            document.getElementById('mallType').value = '';
+            document.getElementById('district').value = '';
+            document.getElementById('budget').value = '';
+            state.allMalls = [...mallsData];
+            renderMalls();
+            showAlert('✓ အချို့ သတ်မှတ်မှုများ ပြန်မူလ', 'success');
+        }
+
+        function selectMall(mallId) {
+            const mall = mallsData.find(m => m.id === mallId);
+            if (mall) {
+                showAlert(`✓ ${mall.name} ရွေးချယ်ပါခြင်း`, 'info');
+                switchTab('malls');
+            }
+        }
+
+        function saveMall(mallId) {
+            const mall = mallsData.find(m => m.id === mallId);
+            if (mall) {
+                showAlert(`✓ ${mall.name} သိမ်းဆည်းပြီးပါပြီ`, 'success');
+            }
+        }
+
+        function showDetails(mallId) {
+            const mall = mallsData.find(m => m.id === mallId);
+            if (mall) {
+                showAlert(`🏬 ${mall.name}\n📍 ${mall.address}\n⭐ ${mall.rating}`, 'info');
+            }
+        }
+
+        function showAlert(message, type = 'info') {
+            const alert = document.createElement('div');
+            alert.className = `alert ${type}`;
+            alert.innerHTML = `<span style="font-size: 18px;">${
+                type === 'success' ? '✓' :
+                type === 'warning' ? '⚠️' :
+                type === 'danger' ? '🚨' :
+                'ℹ️'
+            }</span><span>${message}</span>`;
+            document.body.appendChild(alert);
+            setTimeout(() => alert.remove(), 4000);
+        }
+
+        // ============== INITIALIZATION ==============
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>
+```
